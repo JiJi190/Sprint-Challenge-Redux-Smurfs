@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { SMURFS_REQUEST, SMURFS_SUCCESS, SMURFS_FAILURE } from "../actions";
+import { SMURFS_REQUEST, SMURFS_SUCCESS, SMURFS_FAILURE, ADD_REQUEST, ADD_SUCCESS, ADD_FAILURE} from "../actions";
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -10,8 +10,8 @@ import { SMURFS_REQUEST, SMURFS_SUCCESS, SMURFS_FAILURE } from "../actions";
    smurfs: [],
    fetchingSmurfs: false,
    addSmurf: false,
-  //  updatingSmurf: false
-  //  deletingSmurf: false
+   updatingSmurf: false,
+   deletingSmurf: false,
    error: null
  }
 
@@ -38,6 +38,27 @@ import { SMURFS_REQUEST, SMURFS_SUCCESS, SMURFS_FAILURE } from "../actions";
             fetchingSmurfs: false,
           };
 
+          case ADD_REQUEST:
+            return {
+              ...state,
+              addingSmurf: true,
+              error: null
+            }
+
+            case ADD_SUCCESS:
+              return {
+                ...state,
+                addingSmurf: false,
+                smurfs: action.payload,
+                error: null
+              }
+
+              case ADD_FAILURE:
+                return {
+                  ...state,
+                  addingSmurf: false,
+                  error: action.payload
+                }
           default:
             return state;
    }

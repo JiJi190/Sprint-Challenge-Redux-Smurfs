@@ -49,7 +49,7 @@ class App extends Component {
       <div className="App">
         <h1>Smurfs with Redux</h1>
         <SmurfList smurfs={this.props.smurfs} />
-        <form onSubmit={this.props.smurfs}>
+        <form onSubmit={this.handleAdd}>
           <input
           type="text"
           name="name"
@@ -74,8 +74,9 @@ class App extends Component {
     )
   }
 }
-
+console.log(this.smurfs)
 const mapStateToProps = state => {
+  console.log(state)
   return {
     smurfs: state.smurfs
   }

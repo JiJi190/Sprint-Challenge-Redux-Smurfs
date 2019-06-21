@@ -29,18 +29,19 @@ export const addSmurf = newSmurf => dispatch => {
   dispatch({ type: ADD_REQUEST});
   axios
   .post("http://localhost:3333/smurfs", newSmurf)
-  .then(res => {
-    dispatch({
-      type: ADD_SUCCESS,
-      payload: res.data
-    })
-    .catch(err => {
-      dispatch({
-        type: ADD_FAILURE,
-        payload: err.response
-      })
-    })
+  .then(res => {  dispatch({
+    type: ADD_SUCCESS,
+    payload: res.data
   })
+})
+  
+    .catch(err => {dispatch({
+      type: ADD_FAILURE,
+      payload: err.response
+    })
+      
+    })
+  
 }
 /*
   For this project you'll need at least 2 action creators for the main portion,
